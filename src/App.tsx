@@ -1,3 +1,4 @@
+import { Banner } from "./components/banner/banner.component"
 import { Header } from "./components/header/header.component"
 
 function App() {
@@ -5,7 +6,7 @@ function App() {
   return (
     <>
     <Header />
-      <h1 className='text-pink-700'>Hello</h1>
+    <Banner />
     </>
   )
 }
