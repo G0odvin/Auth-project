@@ -1,6 +1,7 @@
 import { Banner } from "./components/banner/banner.component"
 import { Header } from "./components/header/header.component"
-import { Article } from "./modules/feed/components/artical/article.component"
+import { ArticalList } from "./modules/feed/components/artical-list/artical-list.component"
+import { Feed } from "./modules/feed/components/feed/feed.component"
 
 function App() {
 
@@ -8,7 +9,7 @@ function App() {
     <>
     <Header />
     <Banner />
-    <Article/>
+    <Feed />
     </>
   )
 }
