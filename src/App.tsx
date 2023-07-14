@@ -1,5 +1,6 @@
 import { Banner } from "./components/banner/banner.component"
 import { Header } from "./components/header/header.component"
+import { Article } from "./modules/feed/components/artical/article.component"
 
 function App() {
 
@@ -7,6 +8,7 @@ function App() {
     <>
     <Header />
     <Banner />
+    <Article/>
     </>
   )
 }

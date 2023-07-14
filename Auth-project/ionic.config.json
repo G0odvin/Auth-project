@@ -1,0 +1,7 @@
+{
+  "name": "Auth-project",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react-vite"
+}

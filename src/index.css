@@ -4,6 +4,17 @@
 
 @layer base {
   body {
-    font-family:  'Source Sans 3', sans-serif,
+    font-family:  'Source Sans 3', sans-serif;
+    color: #373a3c;
+  }
+
+  a {
+    @apply text-theme-green;
+
+  &:hover {
+    @apply text-theme-darkGreen;
+    @apply underline;
+  }
   }
 }
+

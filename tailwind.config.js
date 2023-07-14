@@ -11,10 +11,19 @@ export default {
       colors: {
         theme: {
           green: '#5c885c',
+          darkGreen: '#3d8b3d',
+          lightenGray: '#ddd',
+          tag: '#aaa',
+          gray: '#bbb',
+          darkestGray: '#373a3c',
+          darkenGrey: '#999',
         }
       },
       spacing: {
-        navItem: '0.425rem'
+        navItem: '0.425rem',
+        0.3: '0.3rem',
+        0.2: '0.2rem',
+        tag: '0.6rem'
       },
       boxShadow: {
         banner: 'inset 0 8px 8px -8px rgb(0 0 0 / 30%), insent 0 -8px 8px -8px rgb(0 0 0 / 30%)',
@@ -24,6 +33,11 @@ export default {
       },
       fontSize: {
         logo: '3.5rem',
+        date: '0.8rem',
+      },
+      borderRadius: {
+        buttonSm: '0.2rem',
+        tag: '10rem',
       }
     },
   },

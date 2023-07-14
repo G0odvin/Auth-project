@@ -3,7 +3,7 @@ import { Link, NavLink } from 'react-router-dom'
 import { Container } from '../container/container.component'
 
 export const Header = () => {
-  const navLinkClasses = ({ isActive }: { isActive: boolean }) => clsx('py-navItem', {
+  const navLinkClasses = ({ isActive }: { isActive: boolean }) => clsx('py-navItem hover: text-black/60 hover: no-underline', {
     'text-black/30': !isActive,
     'text-black/80': isActive,
   })
