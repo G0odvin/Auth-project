@@ -17,6 +17,10 @@ export default {
           gray: '#bbb',
           darkestGray: '#373a3c',
           darkenGrey: '#999',
+          pageHoverBg: '#eceeef',
+          tagCloudBg: '#f3f3f3',
+          tagItemBg: '#818a91',
+          tagItemBgDarken: '#687077',
         }
       },
       spacing: {
