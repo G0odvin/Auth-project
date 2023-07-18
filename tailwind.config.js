@@ -21,13 +21,16 @@ export default {
           tagCloudBg: '#f3f3f3',
           tagItemBg: '#818a91',
           tagItemBgDarken: '#687077',
+          lightGrey: '#ccc',
+          a1: '#a1a1a1',
         }
       },
       spacing: {
         navItem: '0.425rem',
         0.3: '0.3rem',
         0.2: '0.2rem',
-        tag: '0.6rem'
+        tag: '0.6rem',
+        25: '6.25rem'
       },
       boxShadow: {
         banner: 'inset 0 8px 8px -8px rgb(0 0 0 / 30%), insent 0 -8px 8px -8px rgb(0 0 0 / 30%)',

@@ -16,7 +16,7 @@ export const Article: FC<ArticleProps> = ({ article }) => {
       <div className="border-t border-black/10 py-6">
         <div className="mb-4 font-light flex justify-between">
           <div className="flex">
-          <Link to={`/@${author.username}`}>
+          <Link to={`/${author.username}`}>
             <img
               src={author.image}
               alt={`${author.username} avatar`}
@@ -24,7 +24,7 @@ export const Article: FC<ArticleProps> = ({ article }) => {
             />
           </Link>
           <div className="mr-6 ml-0.3 leading-4 inline-flex flex-col">
-            <Link to={`/@${author.username}`} className="font-medium">
+            <Link to={`/${author.username}`} className="font-medium">
               {author.username}
             </Link>
             <span className="text-theme-gray text-date">{DateTime.fromISO(createdAt).toLocaleString(DateTime.DATE_FULL)}</span>
