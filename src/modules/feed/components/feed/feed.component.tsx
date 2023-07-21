@@ -1,13 +1,9 @@
 import { ArticalList } from '../artical-list/artical-list.component'
-import { Container } from '../../../../components/container/container.component'
-import { FeedToggle } from '../feed-toggle/feed-toggle.component'
 import { FeedData } from '../../api/repository'
 import ReactPaginate from 'react-paginate'
 import { FEED_PAGE_SIZE } from '../../consts'
 import { FC } from 'react'
-import { useSearchParams } from 'react-router-dom'
-import { serializeSearchParams } from '../../../../utils/router'
-import { TagCloud } from '../tag-cloud/tag-cloud.component';
+import { usePagePram } from '../../hooks/usePageParam'
 
 interface FeedProps {
   isLoading: boolean,
@@ -16,12 +12,11 @@ interface FeedProps {
   data?: FeedData,
 }
 
-export const Feed: FC<FeedProps> = ({ isLoading, isFetching, error, data}) => {
-  const [searchParams, setSearchParams] = useSearchParams();
-  const page= searchParams.get('page') ? Number(searchParams.get('page')) : 0;
+export const Feed: FC<FeedProps> = ({ isLoading, isFetching, error, data }) => {
+  const { page, setPage } = usePagePram();
 
   const handlePageChange = ({ selected }: { selected: number }) => {
-    setSearchParams(serializeSearchParams({ page: String(selected) }))
+    setPage(selected);
   }
 
   // const { data, error, isLoading, isFetching } = useGetGlobalFeedQuery({
@@ -31,46 +26,44 @@ export const Feed: FC<FeedProps> = ({ isLoading, isFetching, error, data}) => {
 
   if (isLoading || isFetching) {
     return (
-      <Container>
+      <p className='mt-4'>
         Feed loading...
-      </Container>
+      </p>
     )
   }
 
   if (error) {
     return (
-      <Container>
+      <p className='mt-4'>
         Error while loading feed
-      </Container>
+      </p>
     )
   }
 
+  if (data?.articlesCount === 0) {
+    return <p className='mt-4'>
+      No articles are here... yet.
+    </p>
+  }
+
   return (
-    <Container>
-      <FeedToggle />
-      <div className='flex'>
-        <div className='w-3/4'>
-          <ArticalList list={data?.articles || []} />
-          <nav className="my-6">
-            <ReactPaginate
-              pageCount={(data?.articlesCount || 0) / FEED_PAGE_SIZE}
-              pageRangeDisplayed={(data?.articlesCount || 0) / FEED_PAGE_SIZE}
-              previousLabel={null}
-              nextLabel={null}
-              containerClassName="flex"
-              pageClassName="group"
-              pageLinkClassName="p-3 px-3 py-2 text-theme-green bg-white border border-theme-lightebGrey -ml-px hover:bg-theme-pageHoverBg group-[&:nth-child(3)]: rounded-l group-[&:nth-last-child(2)]:rounded-r hover:bg-theme-pageHoverBg"
-              activeClassName="active group"
-              activeLinkClassName="group-[.active]:bg-theme-green group-[.active]:text-white group-[.active]:border-theme-green"
-              onPageChange={handlePageChange}
-              forcePage={page}
-            />
-          </nav>
-        </div>
-        <div className='w-1/4 pl-3'>
-          <TagCloud />
-        </div>
-      </div>
-    </Container>
+    <>
+      <ArticalList list={data?.articles || []} />
+      <nav className="my-6">
+        <ReactPaginate
+          pageCount={(data?.articlesCount || 0) / FEED_PAGE_SIZE}
+          pageRangeDisplayed={(data?.articlesCount || 0) / FEED_PAGE_SIZE}
+          previousLabel={null}
+          nextLabel={null}
+          containerClassName="flex"
+          pageClassName="group"
+          pageLinkClassName="p-3 px-3 py-2 text-theme-green bg-white border border-theme-lightebGrey -ml-px hover:bg-theme-pageHoverBg group-[&:nth-child(3)]: rounded-l group-[&:nth-last-child(2)]:rounded-r hover:bg-theme-pageHoverBg"
+          activeClassName="active group"
+          activeLinkClassName="group-[.active]:bg-theme-green group-[.active]:text-white group-[.active]:border-theme-green"
+          onPageChange={handlePageChange}
+          forcePage={page}
+        />
+      </nav>
+    </>
   )
 }

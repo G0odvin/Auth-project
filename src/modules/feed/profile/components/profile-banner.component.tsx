@@ -3,7 +3,7 @@ import { FollowButton } from "./follow-button.component"
 
 export const ProfileBanner = () => {
   return (
-    <div className="bg-theme-tagCloudBg pt-8 pb-4">
+    <div className="bg-theme-tagCloudBg pt-8 pb-4 mb-8">
       <Container>
         <div> 
           <img src="https://api.realworld.io/images/demo-avatar.png" className="w-25 h-25 rounded-full mx-auto" alt="username avatar"/>

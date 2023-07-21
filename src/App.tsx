@@ -11,6 +11,7 @@ function App() {
       <Routes >
         <Route path="/" element={<GlobalFeedPage />} />
         <Route path="/:profile" element={<ProfilePage />} />
+        <Route path="/:profile/favorites" element={<ProfilePage />} />
         <Route
           path="*"
           element={<h1 className="title">Page not found</h1>}
