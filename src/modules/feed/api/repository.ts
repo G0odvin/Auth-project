@@ -1,9 +1,9 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
-import { axiosBaseQuery } from "../../../core/axios-base-query";
 import { FeedArticle } from "./dto/global-feed.in";
 import { FEED_PAGE_SIZE } from "../consts";
 import { PopularTagsInDTO } from "./dto/popular-tags.in";
 import { transformResponse } from "./dto/utils";
+import { realworldBaseQuery } from "../../../core/realworld-rest-base-query";
 
 interface BaseFeedParams {
   page: number,
@@ -18,16 +18,14 @@ export interface FeedData {
   articlesCount: number,
 }
 
-interface ProfilePeedParams extends BaseFeedParams {
+interface ProfileFeedParams extends BaseFeedParams {
   author: string,
   isFavorited: boolean,
 }
 
 export const feedApi = createApi({
   reducerPath: 'feedApi',
-  baseQuery: axiosBaseQuery({
-    baseUrl: 'https://api.realworld.io/api',
-  }),
+  baseQuery: realworldBaseQuery,
   endpoints: (builder) => ({
     getGlobalFeed: builder.query<FeedData, GlobalFeedParams>({
       query: ({ page, tag }) => ({
@@ -40,7 +38,7 @@ export const feedApi = createApi({
       }),
       transformResponse: transformResponse
     }),
-    getProfileFeed: builder.query<FeedData, ProfilePeedParams>({
+    getProfileFeed: builder.query<FeedData, ProfileFeedParams>({
       query: ({ page, author, isFavorited = false }) => ({
         url: '/articles',
         params: {

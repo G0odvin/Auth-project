@@ -1,11 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import { feedApi } from "../modules/feed/api/repository";
+import { profileApi } from "../modules/profile/api/repository";
 
 export const store = configureStore({
   reducer: {
     [feedApi.reducerPath]: feedApi.reducer,
-    // [feedSlice.name]: feedSlice.reducer,
+    [profileApi.reducerPath]: profileApi.reducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(feedApi.middleware),
 });
